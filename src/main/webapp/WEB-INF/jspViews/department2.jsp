@@ -6,9 +6,10 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Department Head Dashboard</title>
+<title>Admin Dashboard</title>
 
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
 <title>Dashboard</title>
@@ -27,55 +28,101 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link
-	href="http://localhost:8080/employee_management/resources/css/styles.css"
+	href="${pageContext.request.contextPath}/resources/css/styles.css"
 	rel="stylesheet" />
-
+<script src="https://cdn.fancygrid.com/fancy.min.js"></script>
 
 <style>
-#card-table {
-	width: 200px;
-	height: 240px;
-	overflow: scroll;
+	#card-table
+{
+     width: 200px;
+    height: 240px;
+    overflow:scroll;
+  }  
+    
+ .backgroundImage {
+	background-image: linear-gradient(rgba(0, 0, 0, 0.75),
+		rgba(0, 0, 0, 0.75)), url(./resources/assets/img/login2.jpg);
+	/*  background-image: linear-gradient(rgba(190, 191, 193, 0.75),
+		rgba(190, 191, 193,0.75)); */
+	background-position: center;
+	height: 100%;
+	
+	background-position: center;
+	background-size: cover;
+	margin:0;
 }
+
 </style>
 
 </head>
-<body>
+<body class="">
 
-	<div class="d-flex" id="wrapper">
+	<div class="d-flex backgroundImage" id="wrapper">
 		<!-- Sidebar-->
-		<div class="border-end" id="sidebar-wrapper">
-			<div class="sidebar-heading border-bottom bg-dark text-white">REALCODERZ</div>
-			<div class="list-group list-group-flush "></div>
+		<div class="border-end  bg-lightgrey backgroundImage" id="sidebar-wrapper">
+			<div class="sidebar-heading border-bottom bg-dark text-white">
+			<img alt="realcoderz" src="${pageContext.request.contextPath}/resources/assets/cropped-logowhitetexttransparent.png" style="height: 50px">
+			</div>
+			<div class="list-group list-group-flush ">
+				<a
+					class="list-group-item list-group-item-action list-group-item-light p-3 bg-dark text-white"
+					href="${pageContext.request.contextPath}/department.html">Dashboard</a>
+					
+					<a class="list-group-item list-group-item-action list-group-item-light p-3 bg-dark text-white" href="#profile"
+										data-toggle="modal" data-target="#profile">Profile</a> 
+					
+					<a
+					class="list-group-item list-group-item-action list-group-item-light p-3 bg-dark text-active"
+					href="${pageContext.request.contextPath}/logout.html">Logout</a>
+
+			
+
+				<!--for Admin specific functionality starts-->
+
+				
+
+				
+
+				<!--for admin specific functionality ends-->
+
+				
+
+				
+			</div>
 		</div>
 		<!-- Page content wrapper-->
 		<div id="page-content-wrapper">
 			<!-- Top navigation-->
 			<nav
-				class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom">
+				class="navbar navbar-expand-lg navbar-dark bg-aqua border-bottom">
 				<div class="container-fluid">
-				<button class="btn btn-primary" id="sidebarToggle">Menu</button>
-				<button class="navbar-toggler text-white" type="button"
-					data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-					aria-controls="navbarSupportedContent" aria-expanded="false"
-					aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon navbar-light"></span>
-				</button>
-				<div class="collapse navbar-collapse" id="navbarSupportedContent">
-					<ul class="navbar-nav ms-auto mt-2 mt-lg-0 ">
-						<li class="nav-item active"><a class="nav-link text-white"
-							href="#!">Home</a></li>
+					<button class="btn btn-dark" id="sidebarToggle">Menu</button>
+					<button class="navbar-toggler text-white" type="button"
+						data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+						aria-controls="navbarSupportedContent" aria-expanded="false"
+						aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon navbar-light"></span>
+					</button>
+					<div class="collapse navbar-collapse" id="navbarSupportedContent">
+						<ul class="navbar-nav ms-auto mt-2 mt-lg-0 ">
+							
 
+							<li class="nav-item active">
+							</li>
 
 							<li class="nav-item dropdown text-white"><a
 								class="nav-link dropdown-toggle text-white" id="navbarDropdown"
 								href="#" role="button" data-bs-toggle="dropdown"
-								aria-haspopup="true" aria-expanded="false">${sessionScope.employee.firstName}
-									${sessionScope.employee.lastName}</a>
+								aria-haspopup="true" aria-expanded="false">${sessionScope.employee.firstName } ${sessionScope.employee.lastName}</a>
 								<div class="dropdown-menu dropdown-menu-end bg-dark"
 									aria-labelledby="navbarDropdown">
-									<a class="dropdown-item text-white"
-										href="${pageContext.request.contextPath}/logout.html">Logout</a>
+
+
+									<a class="dropdown-item text-white" href="#profile"
+										data-toggle="modal" data-target="#profile">Profile</a> 
+										<a
+										class="dropdown-item text-white" href="${pageContext.request.contextPath}/logout.html">Logout</a>
 
 
 								</div></li>
@@ -87,233 +134,263 @@
 
 
 			<!-- 	 Cards starts here -->
-			<br>
 
-			<h2 align="center">
-				Logged in as HOD
-				</h4>
-				<h5>${sessionScope.message}</h5>
-				<br>
-				<div class="container-fluid">
+			
+			<div class="container-fluid backgroundImage bg-lightgrey">
+<h2 align="center" class="text-active">Logged in as ${sessionScope.employee.role}</h4> 	 <h5 class="text-active">${sessionScope.message}</h5>	
+			<br>			
+			
 
-
-					<div class="row">
-						<div class="col-sm-5">
-							<div class="card">
-								<div class="card-body">
-									<h5 class="card-title">Employees with Same Department</h5>
-
-
-
+				<div class="row">
+					<div class="col-sm-6">
+						<!-- <div class="card">
+							<div class="card-body">
+								<h5 class="card-title bg-dark" style="color: #fecb32">All Employees</h5> card starting tags closed -->
+								
+								
+								
 									<!-- Card content -->
-
-
+									
+									
 									<c:if test="${not empty allEmployees}">
-										<table class="table">
+									<table class="table card-table"  style="overflow-x:auto; font-size: 14px; overflow-y:scroll">
+										
+									<thead class="thead-dark text-active">
+										<tr>
+
+											<th class="text-active">First Name</th>
+											<th class="text-active">Last Name</th>
+											<th class="text-active">Email</th>
+											<th class="text-active">DOB</th>
+											
+
+										</tr>
+									</thead>
+									<tbody id="empTable">
+										<c:forEach var="emp" items="${allEmployees}">
 											<tr>
-												<!-- <th>Employee Id</th> -->
-												<th>First Name</th>
-												<th>Last Name</th>
-												<th>Email</th>
-												<th>DOB</th>
 
-
+												<td>${emp.firstName}</td>
+												<td>${emp.lastName}</td>
+												<td>${emp.email}</td>
+												<td>${emp.dob}</td>
+													
+								
 											</tr>
+										</c:forEach>
+									</tbody>
+									</table>
 
+								</c:if>
+								<c:if test="${empty allEmployees}">
 
-											<c:forEach var="emp" items="${allEmployees}">
-												<tr>
-													<%-- <td>${emp.empId}</td> --%>
-													<td>${emp.firstName}</td>
-													<td>${emp.lastName}</td>
-													<td>${emp.email}</td>
-													<td>${emp.dob}</td>
-												</tr>
-											</c:forEach>
+									<h2>No Employees Available</h2>
 
-										</table>
-
-									</c:if>
-									<c:if test="${empty allEmployees}">
-
-										<h2>No Employees Available</h2>
-
-									</c:if>
-
-
-
-								</div>
-							</div>
-						</div>
-						<div class="col-sm-7">
-							<div class="card">
-								<div class="card-body">
-									<h5 class="card-title">All Compliance</h5>
-
-									<!-- Card content -->
-									<c:if test="${not empty allCompliance}">
-										<table class="table">
-											<tr>
-												<th>RL ID</th>
-												<th>RL Type</th>
-												<th>Details</th>
-												<th>Create Date</th>
-												<th>Department Name</th>
-												<th>Action</th>
-												<th>Action</th>
-											</tr>
-											<c:forEach var="rl" items="${allCompliance}">
-
-												<tr>
-													<td>${rl.complianceId}</td>
-													<td>${rl.rlType}</td>
-													<td>${rl.details}</td>
-													<td>${rl.createDate}</td>
-													<td>${rl.departmentName}</td>
-													<td><a href="${pageContext.request.contextPath}/send.html?complianceId=${rl.complianceId}" class="btn-success">Send</a></td>
-													<td><a
-														href="${pageContext.request.contextPath}/editComments.html?empId=${sessionScope.employee.empId}&complianceId=${rl.complianceId}&departmentId=${sessionScope.employee.departmentId}">Add
-															Comments</a></td>
-
-												</tr>
-
-											</c:forEach>
-
-
-										</table>
-									</c:if>
-									<c:if test="${empty allCompliance}">
-
-										<h2>No Compliance Available</h2>
-
-									</c:if>
-
-								</div>
-							</div>
-						</div>
+								</c:if>
+									
+									
+									
+								
+							<!-- </div>
+						</div> card ending tags closed -->
 					</div>
+					<div class="col-sm-6">
+						<!-- <div class="card">
+							<div class="card-body">
+								<h5 class="card-title bg-dark" style="color: #fecb32">All Compliance</h5> Card Starting tags commented-->
+								
+								<!-- Card content -->
+									<c:if test="${not empty allCompliance}"> 
+									<table class="table" style="overflow-x:auto; font-size: 14px; overflow-y:scroll">
+										
+										<thead class="thead-dark text-active">
+										<tr>
+										<th class="text-active">RL ID</th>
+										<th class="text-active">RL Type</th>
+										<th class="text-active">Details</th>
+										<th class="text-active">Create Date</th>
+										<th class="text-active">Department Name</th>
+										<th class="text-active">Action</th>
+										<th class="text-active">Action</th>
+										
+										</tr>
+										</thead>
+									<tbody id="rlTable">
+										<c:forEach var="rl" items="${allCompliance}">
+										
+										<tr>
+											<td>${rl.complianceId}</td>
+											<td>${rl.rlType}</td>
+											<td>
+											
+											<a href="${pageContext.request.contextPath}/downloadCompliance.html?complianceId=${rl.complianceId}">${rl.fileTitle}</a>
+											
+											</td>
+											<td>${rl.createDate}</td>
+											<td>${rl.departmentName}</td>
+											<td>
+											<c:if test="${rl.status == 'OPEN'}">
+							
+												<a href="${pageContext.request.contextPath}/editComments.html?empId=${sessionScope.employee.empId}&complianceId=${rl.complianceId}&departmentId=${sessionScope.employee.departmentId}">Add Comment</a>
+												
+											</c:if>
+											</td>
 
-					<div class="row">
-						<div class="col-sm-6">
-							<div class="card">
-								<div class="card-body">
-									<h5 class="card-title">Status Reports</h5>
 
-									<!-- Card content -->
-									<c:if test="${not empty allstatusreport}">
-										<table class="table">
-											<tr>
-												<th>Comments</th>
+
+
+												<td>
+												
+												<c:if test="${rl.status == 'OPEN'}">
+
+													<a href="${pageContext.request.contextPath}/send.html?complianceId=${rl.complianceId}">Send</a>
+
+													</c:if>
+											</td>
+
+
 											</tr>
-											<c:forEach var="rl" items="${allstatusreport}">
+										
+										</c:forEach>
+									</tbody>	
+											
+									</table>
+								</c:if>
+										<c:if test="${empty allCompliance}">
 
-												<tr>
-													<td>${rl.comments}</td>
-													<td><a
-														href="${pageContext.request.contextPath}/Comments.html?statusReportId=${rl.statusReportId}">edit</a>
-													</td>
-												</tr>
-											</c:forEach>
+									<h2>No Compliance Available</h2>
 
-
-										</table>
-									</c:if>
-									<c:if test="${empty allstatusreport}">
-
-										<h2>No Comments Available</h2>
-
-									</c:if>
-								</div>
-							</div>
-
-
-						</div>
-
+								</c:if>
+								<p id="para"></p>
+							<!-- </div>
+						</div> cards ending tags commented -->
 					</div>
-
-
-
 				</div>
+
+				<div class="row">
+				
+					<div class="col-sm-6">
+					
+						
+							<c:if test="${not empty allstatusreport}">
+								<table class="table card-table"  style="overflow-x:auto; font-size: 14px; overflow-y:scroll">
+									
+									<thead class="thead-dark text-active">
+									<tr>
+
+										<th class="text-active">Comments</th>
+										<th class="text-active">On RL</th>
+										<th class="text-active">Action</th>
+
+									</tr>
+									</thead>
+
+									<c:forEach var="rep" items="${allstatusreport}">
+										<tr>
+
+											<td>${rep.comments}</td>
+											<td>${rep.fileTitle}</td>
+											<td>
+											<c:if test="${rep.empId == sessionScope.employee.empId }">
+											<a
+												href="${pageContext.request.contextPath}/Comments.html?statusReportId=${rep.statusReportId}">edit</a>
+											
+											</c:if>
+											</td>
+
+										</tr>
+									</c:forEach>
+
+								</table>
+
+							</c:if>
+							<c:if test="${empty allstatusreport}">
+
+								<h2>No Comments Available</h2>
+
+							</c:if>
+					
+					</div>
+				
+				</div>
+
+			</div>
 		</div>
 	</div>
+
 
 
 
 	<!-- 	Cards end here -->
 
-	<!--Start Modal Add Employee -->
-	<div id="addEmployee" class="modal fade" role="dialog">
+	<div id="profile" class="modal fade" role="dialog">
 		<div class="modal-dialog">
 
 			<!-- Modal content-->
 			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<h4 class="modal-title">Add Employee</h4>
-				</div>
+
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+
 				<div class="modal-body">
-					<jsp:include page="addEmployee.jsp"></jsp:include>
+					<jsp:include page="profile2.jsp"></jsp:include>
 				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				</div>
+
 			</div>
 
 		</div>
-	</div>
-	<!--ends Modal Add Employee -->
+</div>
 
+<%-- <div id="profile" class="modal fade" role="dialog">
+  <div class="modal-dialog">
 
-	<div id="addCompliance" class="modal fade" role="dialog">
-		<div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Add Employee</h4>
+      </div>
+      <div class="modal-body">
+        <jsp:include page="profile.jsp"></jsp:include>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
 
-			<!-- Modal content-->
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<h4 class="modal-title">Add Employee</h4>
-				</div>
-				<div class="modal-body">
-					<jsp:include page="addCompliance.jsp"></jsp:include>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				</div>
-			</div>
-
-		</div>
-	</div>
-
-
+  </div>
+</div> --%>
+	
+	
 	<script type="text/javascript">
-		$("#submit")
-				.submit(
-						function(e) {
+	
+	$("#submit").submit(function(e){
+        
+        console.log('function called')
+      $.ajax({
+           url: 'http://localhost:8082/employee_management/saveDepartment.html',
+           type: 'post',
+           data:$(this).serialize(),
+           success: function() {
+               alert('success');
+           },
+          error: function(){
+              alert('failed');
+          }
+       })        
+  });
+	
+	
 
-							console.log('function called')
-							$
-									.ajax({
-										url : 'http://localhost:8080/employee_management/saveDepartment.html',
-										type : 'post',
-										data : $(this).serialize(),
-										success : function() {
-											alert('success');
-										},
-										error : function() {
-											alert('failed');
-										}
-									})
-						});
+	
+	
 	</script>
-
+	
 	<!-- Bootstrap core JS-->
 	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js">
-		
-	</script>
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"> </script>
 	<!-- Core theme JS-->
 	<script
-		src="http://localhost:8080/employee_management/resources/js/scripts.js"></script>
+		src="${pageContext.request.contextPath}/resources/js/scripts.js"></script>
 
 
 </body>

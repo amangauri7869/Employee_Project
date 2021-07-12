@@ -74,7 +74,7 @@ public class DepartmentUnit {
 	@Test
 	public void testupdateStatusReport() throws Exception{
 	 StatusReportBean statusReportBean = new StatusReportBean();
-	 statusReportBean.setStatusReportId(250);
+	 statusReportBean.setStatusReportId(7);
 	 statusReportBean.setCreateDate(new Date());
 	 statusReportBean.setComments("testing Junit");
 	 boolean status = departmentStatusReportDao.editComment(statusReportBean);
@@ -86,9 +86,9 @@ public class DepartmentUnit {
 		StatusReportBean statusReportBean = new StatusReportBean();
 		statusReportBean.setCreateDate(new Date());
 		statusReportBean.setComments("testing");
-		statusReportBean.setComplianceId(5);
-		statusReportBean.setDepartmentId(4);
-		statusReportBean.setEmpId(6);
+		statusReportBean.setComplianceId(4);
+		statusReportBean.setDepartmentId(1);
+		statusReportBean.setEmpId(2);
 		boolean status = departmentStatusReportDao.saveComment(statusReportBean);
 		assertTrue(status != false);
 	}

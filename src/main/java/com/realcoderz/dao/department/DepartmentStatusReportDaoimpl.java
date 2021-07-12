@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.realcoderz.business.bean.ComplianceBean;
 import com.realcoderz.business.bean.StatusReportBean;
 import com.realcoderz.model.Compliance;
+import com.realcoderz.model.Employee;
 import com.realcoderz.model.StatusReport;
 import com.realcoderz.util.EntityConversion;
 
@@ -101,6 +102,12 @@ public class DepartmentStatusReportDaoimpl implements DepartmentStatusReportDao 
 		boolean status = false;
 		try {
 			
+			
+			
+			  Employee employee = entityManager.find(Employee.class,
+			  statusReportBean.getEmpId()); statusReport.setEmployee(employee);
+			 
+			 
 			entityManager.persist(statusReport);
 			status = true;
 		}catch(Exception exception) {

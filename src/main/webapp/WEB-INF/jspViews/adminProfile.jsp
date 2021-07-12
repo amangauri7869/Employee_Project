@@ -28,9 +28,9 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link
-	href="http://localhost:8080/employee_management/resources/css/styles.css"
+	href="${pageContext.request.contextPath}/resources/css/styles.css"
 	rel="stylesheet" />
-
+<script src="https://cdn.fancygrid.com/fancy.min.js"></script>
 
 <style>
 	#card-table
@@ -43,17 +43,18 @@
 </style>
 
 </head>
-<body>
+<body class="bg-lightgrey">
 
 	<div class="d-flex" id="wrapper">
 		<!-- Sidebar-->
-		<div class="border-end" id="sidebar-wrapper">
-			<div class="sidebar-heading border-bottom bg-dark text-white">REALCODERZ</div>
+		<div class="border-end bg-lightgrey" id="sidebar-wrapper">
+			<div class="sidebar-heading border-bottom bg-dark text-white">
+			<img alt="realcoderz" src="${pageContext.request.contextPath}/resources/assets/cropped-logowhitetexttransparent.png" style="height: 50px">
+			</div>
 			<div class="list-group list-group-flush ">
 				<a
-					class="list-group-item list-group-item-action list-group-item-light p-3 bg-dark text-white"
+					class="list-group-item list-group-item-action list-group-item-light p-3 bg-dark text-active"
 					href="${pageContext.request.contextPath}/admin.html">Dashboard</a>
-
 
 				<a
 					class="list-group-item list-group-item-action list-group-item-light p-3 bg-dark text-white"
@@ -114,7 +115,7 @@
 		<div id="page-content-wrapper">
 			<!-- Top navigation-->
 			<nav
-				class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom">
+				class="navbar navbar-expand-lg navbar-dark bg-primary border-bottom">
 				<div class="container-fluid">
 					<button class="btn btn-primary" id="sidebarToggle">Menu</button>
 					<button class="navbar-toggler text-white" type="button"
@@ -136,7 +137,7 @@
 								aria-haspopup="true" aria-expanded="false">${sessionScope.employee.firstName } ${sessionScope.employee.lastName}</a>
 								<div class="dropdown-menu dropdown-menu-end bg-dark"
 									aria-labelledby="navbarDropdown">
-									<a class="dropdown-item text-white" href="#!">Profile</a> <a
+									<a class="dropdown-item text-white" href="${pageContext.request.contextPath}/adminProfile.html">Profile</a> <a
 										class="dropdown-item text-white" href="${pageContext.request.contextPath}/logout.html">Logout</a>
 
 
@@ -149,29 +150,34 @@
 
 
 			<!-- 	 Cards starts here -->
-			<br>
-			
-			<h2 align="center">Logged in as Admin</h4> 	 <h5>${sessionScope.message}</h5>	
-			<br>
-			<div class="container-fluid">
 
+			
+			<div class="container-fluid bg-lightgrey">
+<h2 align="center" class="text-active">Logged in as Admin</h4> 	 <h5 class="text-active">${sessionScope.message}</h5>	
+			<br>			
+			
 
 				<div class="row">
 					
 					<div class="col-sm-12">
-						<div class="card">
+						<!-- <div class="card">
 							<div class="card-body">
-								<h5 class="card-title">All Compliance</h5>
+								<h5 class="card-title bg-dark" style="color: #fecb32">All Compliance</h5> Card Starting tags commented-->
 								
 								<!-- Card content -->
-									<jsp:include page="profile.jsp"></jsp:include>
+
+
+
+							<jsp:include page="profile.jsp"></jsp:include>
+
 								
-							</div>
-						</div>
-					</div>
+							<!-- </div>
+						</div> cards ending tags commented --></div>
+
+										
 				</div>
 
-
+				<div id="container"></div>
 
 			</div>
 		</div>
@@ -182,7 +188,7 @@
 	<!-- 	Cards end here -->
 
 	<!--Start Modal Add Employee -->
-<div id="addEmployee" class="modal fade" role="dialog">
+<div id="addEmployee" class="modal fade bg-lightgrey" role="dialog">
   <div class="modal-dialog">
 
     <!-- Modal content-->
@@ -252,7 +258,7 @@
         
         console.log('function called')
       $.ajax({
-           url: 'http://localhost:8080/employee_management/saveDepartment.html',
+           url: 'http://localhost:8082/employee_management/saveDepartment.html',
            type: 'post',
            data:$(this).serialize(),
            success: function() {
@@ -264,6 +270,9 @@
        })        
   });
 	
+	
+
+	
 	</script>
 	
 	<!-- Bootstrap core JS-->
@@ -271,7 +280,7 @@
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"> </script>
 	<!-- Core theme JS-->
 	<script
-		src="http://localhost:8080/employee_management/resources/js/scripts.js"></script>
+		src="${pageContext.request.contextPath}/resources/js/scripts.js"></script>
 
 
 </body>

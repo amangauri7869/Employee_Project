@@ -69,16 +69,16 @@ public class AdminTest {
 	public void testUpdateEmployeet() throws Exception {
 		EmployeeBean employeeBean = new EmployeeBean();
 		employeeBean.setFirstName("Ismaeel");
-		employeeBean.setEmpId(118);
+		employeeBean.setEmpId(101);
 		Integer empId = adminService.updateEmployee(employeeBean, null);
 		Assert.assertTrue(empId != 0);
 	}
 	
-	@Test
+	@Test 
 	public void testDeleteEmployeet() throws Exception {
 		EmployeeBean employeeBean = new EmployeeBean();
 		employeeBean.setFirstName("kashif");
-		employeeBean.setEmpId(246);
+		employeeBean.setEmpId(4);
 		Integer empId = adminService.deleteEmloyee(employeeBean, null);
 		Assert.assertTrue(empId != 0);
 	}
@@ -149,7 +149,7 @@ public class AdminTest {
 	{
 ComplianceBean complianceBean = new ComplianceBean();
 		
-		complianceBean.setComplianceId(211);
+		complianceBean.setComplianceId(4);
 		complianceBean.setStatus("CLOSED");
 		Integer closeCompliance = 0;;
 		try {
@@ -160,7 +160,7 @@ ComplianceBean complianceBean = new ComplianceBean();
 		}
 		
 		assertTrue(closeCompliance != 0);
-		
+	 	
 	}
 	
 	@Test
@@ -170,4 +170,41 @@ ComplianceBean complianceBean = new ComplianceBean();
 		
 		assertTrue( statusReportByDepartment != null);
 	}
+	
+	@SuppressWarnings("deprecation")
+	@Test
+	public void testGetMessage() throws Exception {
+		EmployeeBean employeeBean = new EmployeeBean();
+		employeeBean.setFirstName("Imran");
+		employeeBean.setLastName("Siddiqui");
+		employeeBean.setDob(new Date("25/08/2000"));
+		int empId = 0;
+		try {
+			empId = adminService.saveEmployee(employeeBean, null);
+		} catch (Exception e) {
+			empId = 0;
+		}
+		Assert.assertTrue(empId == 0);
+	}
+	
+	// This method is for generating close compliance exception
+	@Test
+	public void testRLNotSubmitted() throws Exception {
+		ComplianceBean complianceBean = new ComplianceBean();
+
+		complianceBean.setComplianceId(20);
+		complianceBean.setStatus("CLOSED");
+		Integer closeCompliance = 0;
+		try {
+			closeCompliance = adminComplianceService.closeCompliance(complianceBean);
+		} catch (RLNotSubmitted e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		assertTrue(closeCompliance == 0);
+
+	}
+	
+	
 }

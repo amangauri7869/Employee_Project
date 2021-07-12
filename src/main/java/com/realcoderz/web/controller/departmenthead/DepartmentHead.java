@@ -1,6 +1,8 @@
 package com.realcoderz.web.controller.departmenthead;
 
-import java.util.ArrayList;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Date;
 import java.util.List;
 
@@ -8,8 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.io.IOUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.DefaultResourceLoader;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,6 +26,7 @@ import com.realcoderz.business.bean.DepartmentBean;
 import com.realcoderz.business.bean.EmployeeBean;
 import com.realcoderz.business.bean.StatusReportBean;
 import com.realcoderz.service.EmailService;
+import com.realcoderz.service.admin.AdminComplianceService;
 import com.realcoderz.service.department.DepartmentComplianceService;
 import com.realcoderz.service.department.DepartmentEmployeeService;
 import com.realcoderz.service.department.DepartmentStatusReportService;
@@ -41,6 +46,7 @@ public class DepartmentHead {
 	
 	private static final Logger LOGGER = Logger.getLogger(DepartmentHead.class);
 	
+	
 	@Autowired
 	private DepartmentComplianceService departmentComplianceService;
 	
@@ -52,6 +58,9 @@ public class DepartmentHead {
 	
 	@Autowired
 	private EmailService emailService;
+
+	@Autowired
+	private AdminComplianceService adminComplianceService;
 	/**
 	   * This method is used to retrieve all the employees, status reports, compliance of a particular department
 	   * @param departmentId
@@ -77,7 +86,7 @@ public class DepartmentHead {
 		 }
 		 
 		ModelAndView modelAndView = new ModelAndView();
-		
+		 
 		modelAndView.setViewName("department2");
 		
 		List<EmployeeBean> allEmployees = departmentEmployeeService.getAllEmployees(employeeBean1.getDepartmentId());
@@ -95,6 +104,8 @@ public class DepartmentHead {
 		modelAndView.addObject("allEmployees",allEmployees);
 		modelAndView.addObject("department", new DepartmentBean());
 		modelAndView.addObject("allstatusreport", allstatusreport);
+		
+		System.out.println(allstatusreport);
 		
 		
 	
@@ -181,6 +192,8 @@ public class DepartmentHead {
 		{
 			return "redirect:/index.html";
 		}	
+		
+		
 		statusReportBean.setCommentDate(new Date());
 		boolean status = departmentReportService.updateStatusReport(statusReportBean);
 		if(status) {
@@ -215,7 +228,7 @@ public class DepartmentHead {
 	@RequestMapping(value = "/addComments", method = RequestMethod.POST)
 	public String addComments(@ModelAttribute("statusReport") StatusReportBean statusReportBean,HttpServletResponse response, HttpServletRequest request)
 			throws Exception {
-		System.out.println("Hello");
+		System.out.println("Hello"); 
 		System.out.println("add comment"+statusReportBean.getComments());
 		System.out.println(statusReportBean.getComplianceId());
 		System.out.println(statusReportBean.getEmpId());
@@ -237,4 +250,51 @@ public class DepartmentHead {
 		}
 		return "redirect:/department.html";
 	}
+	
+	@RequestMapping(value="getPdf", method = RequestMethod.GET)
+	public ModelAndView getPdfPage()
+	{
+		ModelAndView modelAndView = new ModelAndView();
+		
+		List<ComplianceBean> allCompliance = departmentComplianceService.getAllCompliance(1);
+		ComplianceBean complianceBean = adminComplianceService.getCompliance(41);
+		modelAndView.addObject("allCompliance", allCompliance);
+		modelAndView.addObject("compliance", complianceBean);
+		modelAndView.setViewName("demoPdf");
+		
+		return modelAndView;
+	}
+	
+	@RequestMapping(value = "/download", method = RequestMethod.GET)
+    public void getFile(@RequestParam("complianceId") int complianceId, HttpServletResponse response) {
+		
+		ComplianceBean complianceBean = adminComplianceService.getCompliance(complianceId);
+
+		
+        try {
+            DefaultResourceLoader loader = new DefaultResourceLoader();
+            
+            File file = new File(complianceBean.getFilePath());
+            
+            if(file.exists())
+            {
+            	System.out.println("File exists");
+            }
+            else
+            {
+            	System.out.println("File does not exists exists");
+            }
+            InputStream is = loader.getResource(complianceBean.getFilePath()).getInputStream();
+            IOUtils.copy(is, response.getOutputStream());
+            String filePath = complianceBean.getFilePath();
+            String fileExt = filePath.substring(filePath.lastIndexOf("."));
+            
+            String fileName = filePath.substring(filePath.lastIndexOf("/")) + fileExt;
+            
+            response.setHeader("Content-Disposition", "attachment; filename=" + fileName);
+            response.flushBuffer();
+        } catch (IOException ex) {
+            throw new RuntimeException("IOError writing file to output stream" + ex);
+        }
+    }
 }

@@ -78,7 +78,7 @@ public class DepartmentTest {
 	@Test
 	public void testupdateStatusReport() throws Exception{
 	 StatusReportBean statusReportBean = new StatusReportBean();
-	 statusReportBean.setStatusReportId(250);
+	 statusReportBean.setStatusReportId(9);
 	 statusReportBean.setCreateDate(new Date());
 	 statusReportBean.setComments("testing Junit");
 	 boolean status = departmentStatusReportService.updateStatusReport(statusReportBean);
@@ -90,11 +90,18 @@ public class DepartmentTest {
 		StatusReportBean statusReportBean = new StatusReportBean();
 		statusReportBean.setCreateDate(new Date());
 		statusReportBean.setComments("testing");
-		statusReportBean.setComplianceId(5);
-		statusReportBean.setDepartmentId(4);
+		statusReportBean.setComplianceId(4);
+		statusReportBean.setDepartmentId(1);
 		statusReportBean.setEmpId(6);
 		boolean status = departmentStatusReportService.saveStatusReport(statusReportBean);
 		assertTrue(status != false);
+	}
+	
+	@Test
+	public void getComplianceTest() {
+		ComplianceBean compliance = departmentComplianceService.getCompliance(6);
+
+		Assert.assertTrue(compliance != null);
 	}
 	/*
 	 * @Test public void getComplianceTest() { ComplianceBean compliance =

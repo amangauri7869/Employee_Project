@@ -60,7 +60,7 @@ public class EmployeeUnit {
 	@Test
 	public void testeditStatusReport() throws Exception{
 	 StatusReportBean statusReportBean = new StatusReportBean();
-	 statusReportBean.setStatusReportId(250);
+	 statusReportBean.setStatusReportId(9);
 	 statusReportBean.setCreateDate(new Date());
 	 statusReportBean.setComments("testing Junit");
 	 boolean status = employeeStatusReportDao.editComment(statusReportBean);

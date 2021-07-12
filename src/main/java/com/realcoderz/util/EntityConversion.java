@@ -83,6 +83,7 @@ public class EntityConversion {
 			compliance.setFilePath(complianceBean.getFilePath());
 			compliance.setRlType(complianceBean.getRlType());
 			compliance.setStatus(complianceBean.getStatus());
+			compliance.setSignUrl(complianceBean.getSignUrl());
 			department.setDepartmentId(complianceBean.getDepartmentId());
 			department.setDeparmentName(complianceBean.getDepartmentName());
 			
@@ -103,6 +104,7 @@ public class EntityConversion {
 			
 			statusReport.setComments(statusReportBean.getComments());
 			statusReport.setCreateDate(statusReportBean.getCommentDate());
+			
 			//Compliance detail
 			Compliance compliance = new Compliance();
 			compliance.setComplianceId(statusReportBean.getComplianceId());
@@ -200,10 +202,13 @@ public class EntityConversion {
 				employeeBean.setDepartmentId(employee.getDepartment().getDepartmentId());
 			}
 			
-			 
-			employeeBean.setUserId(employee.getLoginMaster().getUserId());
-			employeeBean.setRole(employee.getLoginMaster().getRole());
-			employeeBean.setPassword(employee.getLoginMaster().getPassword());
+			 if(employee != null)
+			 {
+				 	employeeBean.setUserId(employee.getLoginMaster().getUserId());
+					employeeBean.setRole(employee.getLoginMaster().getRole());
+					employeeBean.setPassword(employee.getLoginMaster().getPassword());
+			 }
+			
 		}
 		
 		LOGGER.info("ends entityToBean method");
@@ -225,7 +230,7 @@ public class EntityConversion {
 			complianceBean.setStatus(compliance.getStatus());
 			complianceBean.setDepartmentId(compliance.getDepartment().getDepartmentId());
 			complianceBean.setDepartmentName(compliance.getDepartment().getDeparmentName());
-			
+			complianceBean.setSignUrl(compliance.getSignUrl());
 		} 
 		
 		LOGGER.info("ends entityToBean method");

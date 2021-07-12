@@ -3,6 +3,7 @@ package com.realcoderz.model;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -24,7 +25,8 @@ public class Compliance {
 	@OneToOne(targetEntity=Department.class, cascade=CascadeType.ALL)  
 	@JoinColumn(name="departmentId")
 	private Department department;
-	
+	@Column(length = 200)
+	private String signUrl;
 	public Integer getComplianceId() {
 		return complianceId;
 	}
@@ -69,6 +71,12 @@ public class Compliance {
 	}
 	public void setDepartment(Department department) {
 		this.department = department;
+	}
+	public String getSignUrl() {
+		return signUrl;
+	}
+	public void setSignUrl(String signUrl) {
+		this.signUrl = signUrl;
 	}
 	
 	

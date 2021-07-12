@@ -31,4 +31,6 @@ public interface EmployeeStatusReportDao {
 	   * @param statusReportBean
 	   */
 	public boolean editComment(StatusReportBean statusReportBean);
+	
+	public StatusReportBean getStatursReport(int id);
 }

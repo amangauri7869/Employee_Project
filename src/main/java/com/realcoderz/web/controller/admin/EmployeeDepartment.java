@@ -1,10 +1,6 @@
 package com.realcoderz.web.controller.admin;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
-
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -15,13 +11,10 @@ import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -29,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.gson.Gson;
 import com.realcoderz.business.bean.ComplianceBean;
 import com.realcoderz.business.bean.DepartmentBean;
 import com.realcoderz.business.bean.EmployeeBean;
@@ -36,6 +30,7 @@ import com.realcoderz.service.EmailService;
 import com.realcoderz.service.admin.AdminComplianceService;
 import com.realcoderz.service.admin.AdminDepartmentService;
 import com.realcoderz.service.admin.AdminEmployeeService;
+import com.realcoderz.service.department.DepartmentEmployeeService;
 import com.realcoderz.util.IDGenerator;
 
 
@@ -67,6 +62,8 @@ public class EmployeeDepartment {
 	@Autowired
 	private AdminDepartmentService adminDepartmentService;
 
+	@Autowired
+	private DepartmentEmployeeService departmentEmployeeService;
 	/*
 	 * @InitBinder public void initBinder(WebDataBinder binder) { SimpleDateFormat
 	 * sdf = new SimpleDateFormat("dd-MMM-yyyy");
@@ -91,6 +88,7 @@ public class EmployeeDepartment {
 			return null;
 		} 
   
+		
 		Map<Integer, DepartmentBean> allDepartment = adminDepartmentService.getAllDepartment();
 		session.setAttribute("allDepartments", allDepartment);
 
@@ -242,8 +240,9 @@ public class EmployeeDepartment {
 
 		model.addObject("employee", employee);
 		model.addObject("department", new DepartmentBean());
+		model.addObject("compliance", new ComplianceBean());
 		model.setViewName("editEmployee");
- 
+		
 		LOGGER.info("Ends showUpdateEmployee method");
 		return model;
 
@@ -479,6 +478,22 @@ public class EmployeeDepartment {
 
 		LOGGER.info("Ends loadDashboard method");
 		return modelAndView;
+	}
+	
+	
+	@RequestMapping(value="/empByDepartment", method=RequestMethod.GET)
+	@ResponseBody
+	public String getEmpoyeesBydepartment(@RequestParam("departmentId") int departmentId)
+	{
+		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>emp method called>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+		
+		List<EmployeeBean> allEmployees = departmentEmployeeService.getAllEmployees(departmentId);
+		ComplianceBean compliance = adminComplianceService.getCompliance(2);
+		//return new Gson().toJson(allEmployees);
+		
+		System.out.println(compliance);
+		
+		return new Gson().toJson(allEmployees);
 	}
 	
 	

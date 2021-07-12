@@ -39,7 +39,7 @@ public class ResetCredentials {
 	@Test
 	public void TestGetEmployeeByEmail() throws Exception {
 		
-		EmployeeBean emp=resetCredentialService.getEmployeeByEmail("smlsidd@gmail.com");
+		EmployeeBean emp=resetCredentialService.getEmployeeByEmail("smlsiddiqui6@gmail.com");
 
 	   junit.framework.Assert.assertTrue(emp != null);
 	}
@@ -50,7 +50,7 @@ public class ResetCredentials {
 		LoginMasterBean login=new LoginMasterBean();
 		EmployeeBean employeeBean=new EmployeeBean();
 		employeeBean.setUserId(1005);
-		employeeBean.setEmpId(118);
+		employeeBean.setEmpId(101);
 		employeeBean.setPassword("1234");
 		//login.setPassword("1234");
 		EmployeeBean emp=resetCredentialService.updatePassword(employeeBean);

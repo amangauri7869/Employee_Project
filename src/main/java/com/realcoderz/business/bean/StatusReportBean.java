@@ -3,10 +3,7 @@ package com.realcoderz.business.bean;
 
 
 import java.util.Date;
-
-import com.realcoderz.model.Compliance;
-import com.realcoderz.model.Department;
-import com.realcoderz.model.Employee;
+import java.util.Map;
 
 
 public class StatusReportBean {
@@ -35,6 +32,8 @@ public class StatusReportBean {
 	private String comments;
 	private Date commentDate;
 	
+	private String[] ref;
+	private String[] comment;
 	
 	public Integer getStatusReportId() {
 		return statusReportId;
@@ -132,6 +131,18 @@ public class StatusReportBean {
 	}
 	public void setDepartmentId(Integer departmentId) {
 		this.departmentId = departmentId;
+	}
+	public String[] getRef() {
+		return ref;
+	}
+	public void setRef(String[] ref) {
+		this.ref = ref;
+	}
+	public String[] getComment() {
+		return comment;
+	}
+	public void setComment(String[] comment) {
+		this.comment = comment;
 	}
 	
 	

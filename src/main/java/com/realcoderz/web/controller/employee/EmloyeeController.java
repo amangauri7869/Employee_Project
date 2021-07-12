@@ -52,7 +52,7 @@ public class EmloyeeController {
 		
 		if(session == null)
 		{ 
-			response.sendRedirect(request.getContextPath() + "/index.html");
+			response.sendRedirect(request.getContextPath() + "/");
 			return null;
 		}
 		

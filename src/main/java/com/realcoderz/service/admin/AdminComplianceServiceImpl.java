@@ -100,11 +100,11 @@ public class AdminComplianceServiceImpl implements AdminComplianceService{
 		
 		
 		
-		if(! employeesEmpIds.equals(complianceEmpIds))
-		{
-			throw  new RLNotSubmitted();
-			
-		}
+		/*
+		 * if(! employeesEmpIds.equals(complianceEmpIds)) { throw new RLNotSubmitted();
+		 * 
+		 * }
+		 */
 		
 		Integer closeCompliance = adminComplianceDao.closeCompliance(complianceBean);
 		

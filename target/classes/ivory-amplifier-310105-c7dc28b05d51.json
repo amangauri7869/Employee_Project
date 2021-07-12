@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "ivory-amplifier-310105",
+  "private_key_id": "c7dc28b05d5190c2ec318bb58a9c229b9dfb6145",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQC5G7u/XGH8BgOR\noswcQg425FYTUcshobWVmWqDkczFJpQXz+v/mmbwG4RH+De4gBhTve17dfgMB6F+\nvN5gbruVTcKR7/+GvLFXfCsdD3LN0MV0y3L1DLg9/GxCkdHWzviCmfDUU5jUs8eh\nmf9TsXDnPYSe/nCvByrFhPBBpl5juszYW1cEtKvfSbJrFpA19iFdUCmHTMtB4O4I\n+UQzROZVmXzQIws0t3C/WKMIG4YCL1Exv72YSFFP0RKJVTlz8EHbx7SDJGttFFzK\nNm9qoKoZzEeroCCDLMjrwB1Ss4D1CdeVDstFwWDVDdYRVFTxuL4TrEU+w2pOb2Zg\nKA+dDXuRAgMBAAECggEABggNY58XkejCltfP4ETWZeX7QwO5g3CbiX1spHmsoH47\nuZSSC0D6moIUWuxPfnttWinYXNs7bZhAZBrfK75imNW7jFnzq24nC3jK29Z2xmuH\ndOEzL0u5OMsqiOHA+AeZk9cpwHVdMmMNkxUA5jckJ2NlrfDloY0G0QBI/CP3CTdN\nCIQAlaZ6ET0UC2SNo7wkWXDlqvq/WpJ09V0hTZhbjVcncw7miAhbZh9/CAHboMRb\nAGAp9THdPY7lSZv5mMRhtxNdfHfG/sCnnsJMzyaHnksqtO/ofHumF9c5vxw0NrgK\nBQzCTBYElzNPD2iqSNIcq7Gx3eG12Gsfh892oHGa8QKBgQDeGEeI0YgXpbbdaT/E\nCoZjtknFnH2ffWNtQdOXCES9IWABeP0uAYyTJq0JzrqxuwO9+oOBP2UmH7CRDBoc\nEB3pK9hrraZO3zZZ+Hj12NZzCdFVGiekdurq+S9jGFqGibA2UA1QxswHvbMICqbR\nfjGX9l5ly+qFlojlpAkUCwPPmQKBgQDVXfqZGnsbL+9806cFMwuWqRp1J7rcXeIX\nVRkRl8Zt/jj3rvrqThrCcf2cJA/2QoRJRS6MkNqlEXsGo3jZjBCgs7iroKSCK91t\nRpNbmszpAoTpqhpQ0rouK6GhZuFJRYbWUSuivDiC380P2w2oCYirHitjo+4YcUDP\nkNqggrHmuQKBgQDDlXoZoPxKZuMdJPzEtcgXs4ZQAjoW5CNVKi0dymhObj/PzC6Z\n/z8+r0afZnC+58Sp3x1ECwIWir3BXnj30bGlj7ktSmU0/BkvLkPHrUddU34Hhdr3\nWMoUV5FFoULHTCXkDqdLRWaUQpiRMmAqCQm/m3USDHvhXOn94XElN3YJsQKBgQCa\nudTxU9+0HnXYGpAC2DpuHeD+1jnOdhJvgxlzxZFy0Ck1i+GPKeaD3S/hG9Grbh8K\nFy4jZyP3Eg8aCE+pysWAE/Q2GX9SmkavaL+RbVdtHZOO8vi0Zav3sVI7fiSfAtk9\n74zqLP36AhtthReJJKjEFlO2pPkTJoWuP8gbH8usmQKBgDdqX6yBxf6CTitNMRIg\nVFuylRdoRYgWqcsADOJu0x3ucs6Ru7civISNBTh25jiAC6FDA8sMO8MLSYJjOYny\nxzXCEwm+IMBBRZZ4SqXPa6hBM4951z1enbwnw0FhsIK7EC6yW5fVTHGa5bWiMjSi\ne58XO9VIyJhOqhDKiLrw+b+G\n-----END PRIVATE KEY-----\n",
+  "client_email": "realcoderz@ivory-amplifier-310105.iam.gserviceaccount.com",
+  "client_id": "106037959409332337689",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/realcoderz%40ivory-amplifier-310105.iam.gserviceaccount.com"
+}

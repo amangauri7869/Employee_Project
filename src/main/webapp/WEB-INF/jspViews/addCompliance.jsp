@@ -21,11 +21,11 @@
 	<center>
 		<h2>Add Compliance</h2>
 		<form:form modelAttribute="compliance" method="POST"
-			action="${pageContext.request.contextPath}/createRL.html" enctype="multipart/form-data">
+			action="${pageContext.request.contextPath}/createRL.html" enctype="multipart/form-data" id="rl">
 
 			<br>
 
-			<table class="table">
+			<table class="table" style="width:100%">
 				<tr>
 					<th>RL Type</th>
 					<td><form:input path="rlType" id="rlType" /></td>
@@ -37,10 +37,20 @@
 				</tr>
 
 				<tr>
-					<th>Chose File::</th>
+					<th>Chose File:</th>
 					<td><form:input type="file" path="file" id="file" /></td>
 				</tr>
 
+				
+
+				<tr>
+					<%-- <th>Don't have pdf file?:</th>
+					<td> <input type="checkbox" id="chkPassport" onclick="ShowHideDiv(this)" style="position:fixed; "/> <form:textarea path="text" id="dvPassport" style="display: none; margin-left:15px;"/> </td>
+	 --%>			<td>Sign Url:</td>
+	 				<td><form:input path="signUrl" id="signUrl" /><br><a href="https://na2.documents.adobe.com/public/compose" target="blank">Create Sign URL</a></td>
+	 
+	 </tr>
+				
 				<tr>
 
 					<th>Department</th>
@@ -51,12 +61,12 @@
 
 
 								<form:option value="${entry.key}">${entry.value.departmentName}</form:option>
-
+							
 							</c:forEach>
 
 						</form:select>
 			</table>
-
+			
 			<input type="submit" id="addRl" value="Add">
 
 		</form:form>
@@ -94,6 +104,16 @@
 								}
 							});
 				});
+		
+		
+		
+		function ShowHideDiv(chkPassport) {
+	        var dvPassport = document.getElementById("dvPassport");
+	        var form = document.getElementById("rl");
+	        dvPassport.style.display = chkPassport.checked ? "inline-block" : "none";
+	        form.action = chkPassport.checked ? "${pageContext.request.contextPath}/createTextRl.html" : "${pageContext.request.contextPath}/createRL.html";
+	        
+	    }
 		
 	</script>
 

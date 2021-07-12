@@ -11,11 +11,12 @@ public class ComplianceBean {
 	private String fileTitle = "Enter Details";
 	private String filePath;
 	private Date createDate;
-	private String departmentName = "Department Name";
+	private String departmentName;
 	private String status;
 	private int departmentId;
 	private CommonsMultipartFile file;
-	 
+	private String text;
+	private String signUrl;
 	public Integer getComplianceId() {
 		return complianceId;
 	}
@@ -74,6 +75,20 @@ public class ComplianceBean {
 	}
 	public void setFile(CommonsMultipartFile file) {
 		this.file = file;
+	}
+	
+	public String getText() {
+		return text;
+	}
+	public void setText(String text) {
+		this.text = text;
+	}
+	
+	public String getSignUrl() {
+		return signUrl;
+	}
+	public void setSignUrl(String signUrl) {
+		this.signUrl = signUrl;
 	}
 	@Override
 	

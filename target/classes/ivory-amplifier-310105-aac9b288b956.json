@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "ivory-amplifier-310105",
+  "private_key_id": "aac9b288b9564ed33b203196c4a3e9d6e5ae5d5c",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDbSxCQONNyd055\nv9xHGxxJ4nzEnlQ6ZSGIkWFNBIF5h4lx+rj2UHWPXrn0gxASu13R2anLrtxySBHN\nCbUhDKNASSLEO2ndtHnrQape5GJxrxW5yS7mbLRQcR3lnV7V0bgAEd8sOWIvAkjj\n4s5DB7kMXXVt1zE5ZI5U+en7WZU/wVecbhVj7BSk3wAWQKckiSARRtl2R+tCwTJJ\naOEeX0jKtkiC5KhSzl0314jAm4AcDCWb0NJOWGzwFnNo1/iiLUKyLKfQR6eJcvog\nzucAFLQvOeGnZHR6rSltFv1tmvnDJBcZn4LDxceoixHPDtZtLYWm9Lg7waVWc/nI\nsErFUqQZAgMBAAECggEAE52AqSfeGQttMnR8EYOuKXk3+BXh+pm0cMzxP0R/iNV7\n8L0wqX6rr1P1rfaBu+000Ion1xtoZlQGPJkJUcAZw6yvDo6ycuV7cNTONp/24sya\nlMRXPL79N4NQvWrQ0m8ohmAS3nexDbumdbTiRopkreOXtwgkQ+oX1afHm0cpc5rv\nITf/yh4I29bVgMhixEAKI1GuxJo5bQMJqFvW2XptxrLjVBw+/qNU7Rhgr2eKSziP\n/z0Sm+MX88uPgE+jqr9u4JxKoIvPoXCaNQqRFi8ZvM5GRDn6wn1g5ntIbkhg1VrV\nbSlj2zvJbUgFuY/Huhl7krrwEZyBdgTOZA+Y8MnnMQKBgQD8IhdryAEV61Mr82PZ\nwYGGkyczBIr/3Eqz+gv5UAMYPQl6NPey7MF1/FpGm0f+z6hJPqvEXYGT9E+wd5JA\nUbl2EVAsV3wYIUcjyJLXKDqmjcg5la3CcXyQrHJ+gPTCstgrxTgbKvMFtGvjtRyV\nX3s+7r3Z0wcLnY65k2KJQ37iKQKBgQDeqAoILVu0DIFyj530C52tUG495BKAO/fJ\ntKO+7CLwGJwmZIWMakcRsaL3W/bP2uctq4YxylA1Y5RwxZAzTikmj0mdVvbiWlhM\nSqFcNLVNggA8iWy4Alankt+pawc2XwKcr3VzBbE025Y665tIhVlVm3ZmupXcGvTE\nwimR0wRQcQKBgHBUh/a+/qzTURTNtPi5G4nnWZmDNqJTdPzGNDt5CEfuOaC2pHyU\nuoRkT5wRZnwB7EnloAU2W5qdSDuoqgH55xTRFdULjP/7I4SvwawWAjteA4yUQPvW\nL9cM3V26+lEb+O9XSG3iLq+l+ENU1009Yt1g5Dh9qi/knEfVgBsDdS4xAoGAVzVQ\nAJXrdiDzzrAruLuX/ZskIr+i83EJg4pqHEyW/p1VA8CZgj7aKTb/Uo1FpXHi3ENz\nYysPsWmYaXcoHMA/Y+f5eFPojQ2/ydntS5Ulcf86InvdBlF8KVRgoBXYlFYwSrh6\ncxvGpaJgPCGuB4CbVel3PZNVQQmZ1zsJVyFkbjECgYB03rFRBDeNYRAtb0TGpjTs\n0MvN2x5wkej7mcIXLpek6kC6UTWwZjSKjMNm1c7D0LfrgsWu+da5n/el4ZyoiS+9\ncMF3POJRVrA6dy5+5tk1M5WJxHZoHMfJjnuSikHXluqQcf8licva02G3W+pwQwxR\ne1w9CzgLXlMmUmxNklGwNw==\n-----END PRIVATE KEY-----\n",
+  "client_email": "ivory-amplifier-310105@appspot.gserviceaccount.com",
+  "client_id": "105822462760459219898",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/ivory-amplifier-310105%40appspot.gserviceaccount.com"
+}

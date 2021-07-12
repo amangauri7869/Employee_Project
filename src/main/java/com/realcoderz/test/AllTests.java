@@ -18,5 +18,5 @@ import com.realcoderz.test.unit.EmployeeUnit;
 @RunWith(Suite.class)
 @SuiteClasses({AdminTest.class, DepartmentTest.class,DepartmentUnit.class,EmployeeUnit.class,EmployeeTest.class, LoginTest.class, UtilTest.class, AdminUnit.class, ResetCredentials.class})
 public class AllTests {
-  
-}
+   
+} 

@@ -1,55 +1,45 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta charset="UTF-8">
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
-<link rel="stylesheet" type="text/css" href="resources/assets/css/login.css">
-<title>Insert title here</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="resources/assets/css/login.css">
+    <link
+	href="${pageContext.request.contextPath }/employee_management/resources/css/styles.css"
+	rel="stylesheet" />
+    <script src="resources/assets/js/login.js"></script>
 </head>
-<body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-2.1.0.min.js"></script>
 
-<div class="sidenav">
-         <div class="login-main-text">
-            <h2>Employee Management<br> Password Change Form</h2>
-            <p>Enter you new Password.</p>
-         </div>
-      </div>
-      
-      <div class="main">
-         <div class="col-md-8 ">
-            <div class="login-form">
-<form action="change-password.html" method="post">
+<body>
+    <div id="formWrapper">
+
+        <div id="form">
+     <form action="change-password.html" method="post">
                   <div class="form-group">
-                     <label>Enter New password:</label>
-                     <input type="password" id="newpassword" placeholder="Enter password" name="newpassword">
+                     <label>Enter New password:</label><br>
+                     <input type="password" id="newpassword" placeholder="Enter password" name="newpassword" class="form-style">
                   </div>
 				<div class="form-group">
                      <label>Confirm New password:</label>
-                     <input type="password" id="confirmpassword" placeholder="Confirm Password" name="confirmnewpassword">
+                     <input type="password" id="confirmpassword" placeholder="Confirm Password" name="confirmnewpassword" class="form-style">
                   </div>
 				  <div class="registrationFormAlert" style="color:green;" id="CheckPasswordMatch"></div>                
-                  <button type="submit" id="button" class="btn btn-black" onclick="matchPassword()">Change Password</button>
+                  <button type="submit" id="button" class="login pull-right text-active" onclick="matchPassword()">Change Password</button>
                   
                </form>
-            </div>
-         </div>
-      </div>
-      
-
-<!--  <form action="change-password.html" method="post">
-Enter new Password
-<input type="password" id="newpassword" placeholder="Enter password" name="newpassword">
-Confirm new Password
-<input type="password" id="confirmpassword" placeholder="Confirm Password" name="confirmnewpassword">
-<div class="registrationFormAlert" style="color:green;" id="CheckPasswordMatch"></div>
-
-<input type="submit" value="Change Password" onclick="matchPassword()">
-</form>
--->
+        </div>
+    </div>
+</body>
 <script>
     function checkPasswordMatch() {
         var password = $("#newpassword").val();
@@ -63,6 +53,8 @@ Confirm new Password
        $("#confirmpassword").keyup(checkPasswordMatch);
     });
     </script>
-    
-</body>
 </html>
+
+
+
+

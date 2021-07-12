@@ -3,6 +3,7 @@ package com.realcoderz.model;
 
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -10,7 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinColumns;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -26,7 +27,7 @@ public class StatusReport {
 	@JoinColumn(name="complianceId")
 	private Compliance compliance;
 	
-	@OneToOne  
+	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="empId")
 	private Employee employee;
 	private String comments;
@@ -35,6 +36,7 @@ public class StatusReport {
 	
 	@OneToOne
 	@JoinColumn(name="departmentId")
+	
 	private Department department;
 	public Integer getStatusReportId() {
 		return statusReportId;
@@ -72,7 +74,9 @@ public class StatusReport {
 	public void setDepartment(Department department) {
 		this.department = department;
 	}
+}
+	
 	
 	
 
-}
+

@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.realcoderz.business.bean.StatusReportBean;
+import com.realcoderz.model.Employee;
 import com.realcoderz.model.StatusReport;
 import com.realcoderz.util.EntityConversion;
 
@@ -71,7 +72,8 @@ public class EmployeeStatusReportDaoImp implements EmployeeStatusReportDao {@Aut
 		System.out.println(statusReport.getCompliance());
 		boolean status = false;
 		try {
-			
+			Employee employee = entityManager.find(Employee.class, statusReportBean.getEmpId());
+			statusReport.setEmployee(employee);
 			entityManager.persist(statusReport);
 			status = true;
 		}catch(Exception exception) {
@@ -99,4 +101,21 @@ public class EmployeeStatusReportDaoImp implements EmployeeStatusReportDao {@Aut
 		}
 		return status;
 	}
+
+	@Override
+	public StatusReportBean getStatursReport(int id) {
+		
+		StatusReportBean statusReportBean = null;
+			
+		try 
+		{
+			StatusReport st = entityManager.find(StatusReport.class, id);
+			 statusReportBean = entityConversion.entityToBean(st);
+		}
+		catch(Exception e)
+		{}
+		return statusReportBean;
+	}
+	
+	
 }

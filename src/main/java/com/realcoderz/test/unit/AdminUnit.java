@@ -2,7 +2,7 @@ package com.realcoderz.test.unit;
 
 import static org.junit.Assert.assertTrue;
 
-
+import java.io.FileNotFoundException;
 import java.util.Date;
 import java.util.List;
 
@@ -23,6 +23,7 @@ import com.realcoderz.business.bean.StatusReportBean;
 import com.realcoderz.dao.admin.AdminComplianceDao;
 import com.realcoderz.dao.admin.AdminDepartmentDao;
 import com.realcoderz.dao.admin.AdminEmployeeDao;
+import com.realcoderz.util.FileGenerator;
 import com.realcoderz.util.IDGenerator;
 
 import junit.framework.Assert;
@@ -93,7 +94,7 @@ public class AdminUnit {
 	{
 		EmployeeBean employeeBean = new EmployeeBean();
 		employeeBean.setFirstName("Ismaeel");
-		employeeBean.setEmpId(118);
+		employeeBean.setEmpId(101);
 		Integer empId = adminEmployeedao.updateEmployee(employeeBean);
 		Assert.assertTrue(empId != 0);
 	}
@@ -105,8 +106,8 @@ public class AdminUnit {
 	{
 		EmployeeBean employeeBean = new EmployeeBean();
 		employeeBean.setFirstName("kashif");
-		employeeBean.setEmpId(118);
-		Integer empId = adminEmployeedao.deleteEmloyee(employeeBean);
+		employeeBean.setEmpId(4);
+		Integer empId = adminEmployeedao.deleteEmloyee(employeeBean); 
 		Assert.assertTrue(empId != 0);
 	}
 	
@@ -152,7 +153,7 @@ public class AdminUnit {
 	{
 		ComplianceBean complianceBean = new ComplianceBean();
 		
-		complianceBean.setComplianceId(210);
+		complianceBean.setComplianceId(6);
 		complianceBean.setStatus("CLOSED");
 		Integer closeCompliance = adminCompliancedao.closeCompliance(complianceBean);
 		
@@ -190,6 +191,24 @@ public class AdminUnit {
 	}
 	
 	
+	@Test
+	public void getComplianceTest() {
+		ComplianceBean complianceBean = adminCompliancedao.getCompliance(6);
+		assertTrue(complianceBean != null);
+	}
+	
+	@Test
+	public void testPdfGenerator() {
+		String dest = "A:\\pdfOfProject";
+		String para = "This is test method of pdf generator";
+		try {
+			FileGenerator.generatePdf(dest, para);
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
 	
 	
 	
